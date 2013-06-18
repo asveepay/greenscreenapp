@@ -2,11 +2,11 @@ require 'rubygems'
 require 'bundler/setup'
 
 require 'sinatra'
-require 'erb'
-require 'rexml/document'
-require 'hpricot'
-require 'open-uri'
 require 'yaml'
+require 'erb'
+require 'nokogiri'
+require 'rexml/document'
+require 'open-uri'
 require 'timeout' # to catch error
 
 get '/' do
@@ -38,7 +38,7 @@ get '/' do
 end
 
 def load_servers
-  YAML.load(StringIO.new(ERB.new(File.read 'config.yml').result))
+  YAML.load_file(File.expand_path('../config.yml', __FILE__))
 end
 
 def accumulate_projects(server, xml)
