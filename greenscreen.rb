@@ -7,7 +7,6 @@ require 'rexml/document'
 require 'hpricot'
 require 'open-uri'
 require 'yaml'
-require 'erb'
 require 'timeout' # to catch error
 
 get '/' do

@@ -65,6 +65,7 @@
       <% else %>
         <div id="unsuccessful_projects">
           <% @unsuccessful_projects.each do |project| %>
+            <% next if project.last_build_time < Time.now-3600*24*90 %>
             <article class="project <%= project.last_build_status %> <%= project.activity.downcase %>">
               <section class="project-section">
                 <div class="project-ct">
