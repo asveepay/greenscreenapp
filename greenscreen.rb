@@ -32,7 +32,7 @@ get '/' do
 
   @projects = @projects.sort_by { |p| p.name.downcase }
   @successful_projects = @projects.select { |p| p.last_build_status == 'success' }
-  @unsuccessful_projects = @projects.select { |p| p.last_build_status != 'success' }
+  @unsuccessful_projects = @projects.reject { |p| ['unknown', 'success'].include?(p.last_build_status) }
 
   erb :index
 end

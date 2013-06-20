@@ -26,11 +26,11 @@
 
       rows = [@rows, 1.0].max
 
-      h1_size = "#{(10 / rows * 3) - 4}em"
+      h1_size = "#{((10 / rows * 3) - 4).abs}em"
     %>
     article {
       width: <%= (100 / @columns).to_i %>%;
-      height: <%= 100 / rows %>%;
+      height: <%=[100 / rows, 25].max %>%;
     }
     h1 {
       font-size: <%= h1_size %>;
